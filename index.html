@@ -3236,120 +3236,105 @@
            PRODUTOS
         ======================================================== */
 
-        function renderProducts() {
+        function getProductImage(product) {
 
-            const grid =
-                document.getElementById("productGrid");
+    const images = {
+        "Fender Stratocaster Player": "fender_player.png",
+        "Gibson Les Paul Studio": "les_paul.png",
+        "Yamaha PSR": "yamaha.png",
+        "Pearl Export EXX": "pearl.png",
+        "Shure SM58": "shure.png",
+        "Fender Jazz Bass": "fender_jazz.png"
+    };
 
-
-            grid.innerHTML =
-                db.products.map(product => {
-
-                    let stockClass = "";
-
-                    if (product.stock <= 3)
-                        stockClass = "low";
-
-                    if (product.stock === 0)
-                        stockClass = "empty-stock";
+    return images[product.name] || "";
+}
 
 
-                    return `
+function renderProducts() {
 
-                        <div class="product-card">
+    const grid =
+        document.getElementById("productGrid");
 
-                            <div class="product-image">
+    grid.innerHTML =
+        db.products.map(product => {
 
-                                <i class="fa-solid fa-guitar"></i>
+            let stockClass = "";
 
-                                <span>
-                                    ${escapeHTML(product.category)}
-                                </span>
+            if (product.stock <= 3)
+                stockClass = "low";
 
-                            </div>
+            if (product.stock === 0)
+                stockClass = "empty-stock";
 
+            const image =
+                getProductImage(product);
 
-                            <div class="product-info">
+            return `
 
-                                <h3>
-                                    ${escapeHTML(product.name)}
-                                </h3>
+                <div class="product-card">
 
-                                <span class="product-category">
-                                    ${escapeHTML(product.category)}
-                                </span>
+                    <div class="product-image">
 
+                        ${
+                            image
+                            ? `
+                                <img
+                                    src="${image}"
+                                    alt="${escapeHTML(product.name)}"
+                                    loading="lazy"
+                                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                                >
 
-                                <div class="product-bottom">
-
-                                    <strong>
-                                        ${money(product.price)}
-                                    </strong>
-
-                                    <span class="stock ${stockClass}">
-                                        ${product.stock} em estoque
-                                    </span>
-
+                                <div class="product-fallback">
+                                    <i class="fa-solid fa-guitar"></i>
                                 </div>
+                            `
+                            : `
+                                <div class="product-fallback">
+                                    <i class="fa-solid fa-guitar"></i>
+                                </div>
+                            `
+                        }
 
-                            </div>
+                        <span>
+                            ${escapeHTML(product.category)}
+                        </span>
+
+                    </div>
+
+
+                    <div class="product-info">
+
+                        <h3>
+                            ${escapeHTML(product.name)}
+                        </h3>
+
+                        <span class="product-category">
+                            ${escapeHTML(product.category)}
+                        </span>
+
+
+                        <div class="product-bottom">
+
+                            <strong>
+                                ${money(product.price)}
+                            </strong>
+
+                            <span class="stock ${stockClass}">
+                                ${product.stock} em estoque
+                            </span>
 
                         </div>
 
-                    `;
+                    </div>
 
-                }).join("");
+                </div>
 
-        }
+            `;
 
-
-        document
-            .getElementById("productForm")
-            .addEventListener("submit", e => {
-
-                e.preventDefault();
-
-
-                const product = {
-
-                    id: Date.now(),
-
-                    name:
-                        document.getElementById("productName").value,
-
-                    category:
-                        document.getElementById("productCategory").value,
-
-                    price:
-                        Number(
-                            document.getElementById("productPrice").value
-                        ),
-
-                    stock:
-                        Number(
-                            document.getElementById("productStock").value
-                        )
-
-                };
-
-
-                db.products.push(product);
-
-                saveDB();
-
-                e.target.reset();
-
-                closeModal("productModal");
-
-                renderAll();
-
-
-                toast(
-                    "Produto cadastrado",
-                    `${product.name} foi adicionado ao catálogo.`
-                );
-
-            });
+        }).join("");
+}
 
 
         /* ========================================================
