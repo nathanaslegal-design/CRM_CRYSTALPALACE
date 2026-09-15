@@ -1,793 +1,4086 @@
-```html
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>CRM | Crystal Palace</title>
+    <title>Crystal Palace | CRM</title>
+
+    <meta name="description"
+        content="Sistema de CRM da Crystal Palace - Gestão de clientes, vendas, assistência técnica e pós-venda.">
 
     <link rel="stylesheet" href="style.css">
 
-    <!-- Google Fonts -->
+    <!-- Fontes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Ícones -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
 </head>
 
 <body>
 
-    <!-- ================= HEADER ================= -->
+    <!-- =========================================================
+         SIDEBAR
+    ========================================================== -->
 
-    <header class="header">
+    <aside class="sidebar" id="sidebar">
 
-        <div class="logo">
-            <span>🎸</span>
-            <div>
-                <strong>CRYSTAL</strong>
-                <small>PALACE</small>
+        <div class="brand">
+
+            <div class="brand-icon">
+                <i class="fa-solid fa-guitar"></i>
             </div>
+
+            <div class="brand-text">
+                <strong>CRYSTAL</strong>
+                <span>PALACE</span>
+            </div>
+
         </div>
 
-        <nav>
-            <a href="#inicio">Início</a>
-            <a href="#crm">CRM</a>
-            <a href="#setores">Setores</a>
-            <a href="#jornada">Jornada</a>
-            <a href="#indicadores">Indicadores</a>
-            <a href="#execucao">Execução</a>
+
+        <div class="sidebar-label">
+            MENU PRINCIPAL
+        </div>
+
+
+        <nav class="menu">
+
+            <button class="menu-item active" data-section="dashboard">
+                <i class="fa-solid fa-chart-pie"></i>
+                <span>Dashboard</span>
+            </button>
+
+            <button class="menu-item" data-section="clientes">
+                <i class="fa-solid fa-users"></i>
+                <span>Clientes</span>
+            </button>
+
+            <button class="menu-item" data-section="vendas">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span>Vendas</span>
+            </button>
+
+            <button class="menu-item" data-section="assistencia">
+                <i class="fa-solid fa-screwdriver-wrench"></i>
+                <span>Assistência</span>
+            </button>
+
+            <button class="menu-item" data-section="posvenda">
+                <i class="fa-solid fa-heart"></i>
+                <span>Pós-venda</span>
+            </button>
+
         </nav>
 
-    </header>
+
+        <div class="sidebar-label">
+            GESTÃO
+        </div>
 
 
-    <!-- ================= HERO ================= -->
+        <nav class="menu">
 
-    <section id="inicio" class="hero">
+            <button class="menu-item" data-section="produtos">
+                <i class="fa-solid fa-guitar"></i>
+                <span>Produtos</span>
+            </button>
 
-        <div class="hero-content">
+            <button class="menu-item" data-section="relatorios">
+                <i class="fa-solid fa-chart-line"></i>
+                <span>Relatórios</span>
+            </button>
 
-            <p class="tag">PROJETO DE CRM • CRYSTAL PALACE</p>
+        </nav>
 
-            <h1>
-                CRM QUE
-                <span>CONECTA</span>
-                MÚSICOS
-            </h1>
 
-            <p class="hero-text">
-                Planejamento e execução de um sistema de relacionamento
-                com clientes para uma empresa de instrumentos musicais
-                com vendas online e presenciais.
-            </p>
+        <div class="sidebar-bottom">
 
-            <div class="hero-buttons">
-                <a href="#crm" class="btn btn-primary">
-                    Conhecer o projeto
-                </a>
+            <div class="system-status">
+                <span class="status-dot"></span>
 
-                <a href="#indicadores" class="btn btn-outline">
-                    Ver indicadores
-                </a>
+                <div>
+                    <strong>Sistema online</strong>
+                    <small>CRM Crystal Palace</small>
+                </div>
             </div>
 
         </div>
 
-        <div class="guitar">
-            🎸
+    </aside>
+
+
+    <!-- =========================================================
+         MAIN
+    ========================================================== -->
+
+    <main class="main">
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+            <div class="mobile-brand">
+
+                <button class="mobile-menu" id="mobileMenu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
+                <strong>CRYSTAL PALACE</strong>
+
+            </div>
+
+
+            <div class="topbar-search">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input
+                    type="text"
+                    id="globalSearch"
+                    placeholder="Pesquisar clientes, vendas..."
+                >
+
+            </div>
+
+
+            <div class="topbar-actions">
+
+                <button class="icon-button" id="notificationBtn" title="Notificações">
+                    <i class="fa-regular fa-bell"></i>
+                    <span class="notification-count">3</span>
+                </button>
+
+
+                <div class="profile">
+
+                    <div class="avatar">
+                        CP
+                    </div>
+
+                    <div class="profile-info">
+                        <strong>Crystal Palace</strong>
+                        <span>Administrador</span>
+                    </div>
+
+                    <i class="fa-solid fa-chevron-down"></i>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- =====================================================
+             CONTENT
+        ====================================================== -->
+
+        <div class="content">
+
+
+            <!-- =================================================
+                 DASHBOARD
+            ================================================== -->
+
+            <section class="page-section active" id="dashboard">
+
+                <div class="page-heading">
+
+                    <div>
+                        <span class="eyebrow">VISÃO GERAL</span>
+
+                        <h1>
+                            Dashboard
+                            <span>Crystal Palace</span>
+                        </h1>
+
+                        <p>
+                            Acompanhe clientes, vendas, assistência técnica e pós-venda em um único lugar.
+                        </p>
+                    </div>
+
+
+                    <button class="primary-button" onclick="openModal('saleModal')">
+                        <i class="fa-solid fa-plus"></i>
+                        Nova venda
+                    </button>
+
+                </div>
+
+
+                <!-- KPIs -->
+
+                <div class="kpi-grid">
+
+                    <div class="kpi-card">
+
+                        <div class="kpi-icon purple">
+                            <i class="fa-solid fa-users"></i>
+                        </div>
+
+                        <div class="kpi-data">
+                            <span>Clientes cadastrados</span>
+                            <strong id="totalClients">0</strong>
+                            <small class="positive">
+                                <i class="fa-solid fa-arrow-up"></i>
+                                Base ativa
+                            </small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="kpi-card">
+
+                        <div class="kpi-icon green">
+                            <i class="fa-solid fa-sack-dollar"></i>
+                        </div>
+
+                        <div class="kpi-data">
+                            <span>Faturamento</span>
+                            <strong id="totalRevenue">R$ 0</strong>
+                            <small class="positive">
+                                <i class="fa-solid fa-chart-line"></i>
+                                Vendas registradas
+                            </small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="kpi-card">
+
+                        <div class="kpi-icon orange">
+                            <i class="fa-solid fa-basket-shopping"></i>
+                        </div>
+
+                        <div class="kpi-data">
+                            <span>Total de vendas</span>
+                            <strong id="totalSales">0</strong>
+                            <small>
+                                Pedidos realizados
+                            </small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="kpi-card">
+
+                        <div class="kpi-icon blue">
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+
+                        <div class="kpi-data">
+                            <span>Ticket médio</span>
+                            <strong id="averageTicket">R$ 0</strong>
+                            <small>
+                                Por venda
+                            </small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- DASHBOARD GRID -->
+
+                <div class="dashboard-grid">
+
+
+                    <!-- SALES CHART -->
+
+                    <div class="panel sales-chart-panel">
+
+                        <div class="panel-header">
+
+                            <div>
+                                <h2>Desempenho de vendas</h2>
+                                <p>Visão geral das vendas registradas</p>
+                            </div>
+
+                            <select id="chartPeriod">
+                                <option value="all">Todos os dados</option>
+                                <option value="recent">Últimas vendas</option>
+                            </select>
+
+                        </div>
+
+
+                        <div class="chart-container">
+
+                            <canvas id="salesChart"></canvas>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PIPELINE -->
+
+                    <div class="panel">
+
+                        <div class="panel-header">
+
+                            <div>
+                                <h2>Funil de vendas</h2>
+                                <p>Clientes em cada etapa</p>
+                            </div>
+
+                            <i class="fa-solid fa-filter panel-icon"></i>
+
+                        </div>
+
+
+                        <div class="pipeline">
+
+                            <div class="pipeline-row">
+
+                                <div class="pipeline-title">
+                                    <span class="pipeline-dot lead"></span>
+                                    Leads
+                                </div>
+
+                                <strong id="pipelineLeads">0</strong>
+
+                            </div>
+
+                            <div class="pipeline-bar">
+                                <span id="barLeads"></span>
+                            </div>
+
+
+                            <div class="pipeline-row">
+
+                                <div class="pipeline-title">
+                                    <span class="pipeline-dot contact"></span>
+                                    Em contato
+                                </div>
+
+                                <strong id="pipelineContact">0</strong>
+
+                            </div>
+
+                            <div class="pipeline-bar">
+                                <span id="barContact"></span>
+                            </div>
+
+
+                            <div class="pipeline-row">
+
+                                <div class="pipeline-title">
+                                    <span class="pipeline-dot negotiation"></span>
+                                    Negociação
+                                </div>
+
+                                <strong id="pipelineNegotiation">0</strong>
+
+                            </div>
+
+                            <div class="pipeline-bar">
+                                <span id="barNegotiation"></span>
+                            </div>
+
+
+                            <div class="pipeline-row">
+
+                                <div class="pipeline-title">
+                                    <span class="pipeline-dot won"></span>
+                                    Venda realizada
+                                </div>
+
+                                <strong id="pipelineWon">0</strong>
+
+                            </div>
+
+                            <div class="pipeline-bar">
+                                <span id="barWon"></span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- BOTTOM DASHBOARD -->
+
+                <div class="dashboard-bottom">
+
+
+                    <!-- RECENT SALES -->
+
+                    <div class="panel large-panel">
+
+                        <div class="panel-header">
+
+                            <div>
+                                <h2>Vendas recentes</h2>
+                                <p>Últimas movimentações</p>
+                            </div>
+
+                            <button class="text-button" onclick="showSection('vendas')">
+                                Ver todas
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+
+                        </div>
+
+
+                        <div class="table-wrapper">
+
+                            <table>
+
+                                <thead>
+
+                                    <tr>
+                                        <th>CLIENTE</th>
+                                        <th>PRODUTO</th>
+                                        <th>VALOR</th>
+                                        <th>CANAL</th>
+                                        <th>STATUS</th>
+                                    </tr>
+
+                                </thead>
+
+                                <tbody id="recentSalesTable">
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ACTIVITIES -->
+
+                    <div class="panel">
+
+                        <div class="panel-header">
+
+                            <div>
+                                <h2>Atividades</h2>
+                                <p>Últimas ações</p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="activity-list" id="activityList">
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 CLIENTES
+            ================================================== -->
+
+            <section class="page-section" id="clientes">
+
+                <div class="page-heading">
+
+                    <div>
+                        <span class="eyebrow">RELACIONAMENTO</span>
+
+                        <h1>
+                            Clientes
+                            <span>e contatos</span>
+                        </h1>
+
+                        <p>
+                            Gerencie informações e histórico dos clientes da Crystal Palace.
+                        </p>
+                    </div>
+
+                    <button class="primary-button" onclick="openModal('clientModal')">
+                        <i class="fa-solid fa-user-plus"></i>
+                        Novo cliente
+                    </button>
+
+                </div>
+
+
+                <div class="stats-mini-grid">
+
+                    <div class="mini-stat">
+                        <span>Total de clientes</span>
+                        <strong id="clientStatTotal">0</strong>
+                    </div>
+
+                    <div class="mini-stat">
+                        <span>Clientes ativos</span>
+                        <strong id="clientStatActive">0</strong>
+                    </div>
+
+                    <div class="mini-stat">
+                        <span>Clientes VIP</span>
+                        <strong id="clientStatVip">0</strong>
+                    </div>
+
+                    <div class="mini-stat">
+                        <span>Novos clientes</span>
+                        <strong id="clientStatNew">0</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <div class="table-toolbar">
+
+                        <div class="toolbar-search">
+
+                            <i class="fa-solid fa-magnifying-glass"></i>
+
+                            <input
+                                id="clientSearch"
+                                type="text"
+                                placeholder="Buscar cliente..."
+                            >
+
+                        </div>
+
+
+                        <select id="clientFilter">
+
+                            <option value="all">Todos os clientes</option>
+                            <option value="VIP">VIP</option>
+                            <option value="Ativo">Ativos</option>
+                            <option value="Inativo">Inativos</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="table-wrapper">
+
+                        <table>
+
+                            <thead>
+
+                                <tr>
+                                    <th>CLIENTE</th>
+                                    <th>CONTATO</th>
+                                    <th>PERFIL</th>
+                                    <th>ÚLTIMA COMPRA</th>
+                                    <th>VALOR</th>
+                                    <th>STATUS</th>
+                                    <th>AÇÕES</th>
+                                </tr>
+
+                            </thead>
+
+                            <tbody id="clientsTable">
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 VENDAS
+            ================================================== -->
+
+            <section class="page-section" id="vendas">
+
+                <div class="page-heading">
+
+                    <div>
+                        <span class="eyebrow">COMERCIAL</span>
+
+                        <h1>
+                            Gestão de
+                            <span>vendas</span>
+                        </h1>
+
+                        <p>
+                            Controle pedidos realizados na loja física e no e-commerce.
+                        </p>
+                    </div>
+
+                    <button class="primary-button" onclick="openModal('saleModal')">
+                        <i class="fa-solid fa-plus"></i>
+                        Registrar venda
+                    </button>
+
+                </div>
+
+
+                <div class="sales-summary">
+
+                    <div class="summary-box">
+                        <i class="fa-solid fa-money-bill-trend-up"></i>
+                        <div>
+                            <span>Faturamento total</span>
+                            <strong id="salesRevenue">R$ 0</strong>
+                        </div>
+                    </div>
+
+                    <div class="summary-box">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <div>
+                            <span>Pedidos</span>
+                            <strong id="salesCount">0</strong>
+                        </div>
+                    </div>
+
+                    <div class="summary-box">
+                        <i class="fa-solid fa-chart-simple"></i>
+                        <div>
+                            <span>Ticket médio</span>
+                            <strong id="salesTicket">R$ 0</strong>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <div class="table-toolbar">
+
+                        <div class="toolbar-search">
+
+                            <i class="fa-solid fa-magnifying-glass"></i>
+
+                            <input
+                                id="saleSearch"
+                                type="text"
+                                placeholder="Buscar venda..."
+                            >
+
+                        </div>
+
+
+                        <select id="saleFilter">
+
+                            <option value="all">Todos os status</option>
+                            <option value="Pago">Pago</option>
+                            <option value="Pendente">Pendente</option>
+                            <option value="Enviado">Enviado</option>
+                            <option value="Concluído">Concluído</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="table-wrapper">
+
+                        <table>
+
+                            <thead>
+
+                                <tr>
+                                    <th>ID</th>
+                                    <th>CLIENTE</th>
+                                    <th>PRODUTO</th>
+                                    <th>DATA</th>
+                                    <th>CANAL</th>
+                                    <th>VALOR</th>
+                                    <th>STATUS</th>
+                                    <th>AÇÃO</th>
+                                </tr>
+
+                            </thead>
+
+                            <tbody id="salesTable">
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 ASSISTÊNCIA
+            ================================================== -->
+
+            <section class="page-section" id="assistencia">
+
+                <div class="page-heading">
+
+                    <div>
+                        <span class="eyebrow">SUPORTE TÉCNICO</span>
+
+                        <h1>
+                            Assistência
+                            <span>técnica</span>
+                        </h1>
+
+                        <p>
+                            Acompanhe ordens de serviço, equipamentos e manutenção.
+                        </p>
+                    </div>
+
+                    <button class="primary-button" onclick="openModal('serviceModal')">
+                        <i class="fa-solid fa-screwdriver-wrench"></i>
+                        Nova ordem
+                    </button>
+
+                </div>
+
+
+                <div class="service-stats">
+
+                    <div class="service-stat">
+                        <span>Ordens abertas</span>
+                        <strong id="serviceOpen">0</strong>
+                        <i class="fa-solid fa-folder-open"></i>
+                    </div>
+
+                    <div class="service-stat">
+                        <span>Em manutenção</span>
+                        <strong id="serviceProgress">0</strong>
+                        <i class="fa-solid fa-gears"></i>
+                    </div>
+
+                    <div class="service-stat">
+                        <span>Aguardando cliente</span>
+                        <strong id="serviceWaiting">0</strong>
+                        <i class="fa-solid fa-clock"></i>
+                    </div>
+
+                    <div class="service-stat">
+                        <span>Concluídas</span>
+                        <strong id="serviceDone">0</strong>
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+
+                </div>
+
+
+                <div class="service-grid" id="serviceGrid">
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 PÓS VENDA
+            ================================================== -->
+
+            <section class="page-section" id="posvenda">
+
+                <div class="page-heading">
+
+                    <div>
+                        <span class="eyebrow">FIDELIZAÇÃO</span>
+
+                        <h1>
+                            Pós-venda
+                            <span>Crystal Palace</span>
+                        </h1>
+
+                        <p>
+                            Acompanhe o relacionamento após cada compra.
+                        </p>
+                    </div>
+
+                    <button class="primary-button" onclick="openModal('followModal')">
+                        <i class="fa-solid fa-plus"></i>
+                        Nova atividade
+                    </button>
+
+                </div>
+
+
+                <div class="post-grid">
+
+                    <div class="post-card">
+
+                        <div class="post-card-icon">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+
+                        <div>
+                            <span>Contatos pendentes</span>
+                            <strong id="followPending">0</strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="post-card">
+
+                        <div class="post-card-icon">
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+
+                        <div>
+                            <span>Pesquisas realizadas</span>
+                            <strong id="surveyCount">0</strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="post-card">
+
+                        <div class="post-card-icon">
+                            <i class="fa-solid fa-heart"></i>
+                        </div>
+
+                        <div>
+                            <span>Clientes fidelizados</span>
+                            <strong id="loyalClients">0</strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="post-card">
+
+                        <div class="post-card-icon">
+                            <i class="fa-solid fa-face-smile"></i>
+                        </div>
+
+                        <div>
+                            <span>Satisfação média</span>
+                            <strong id="satisfaction">0%</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <h2>Atividades de pós-venda</h2>
+                            <p>Relacionamento com clientes</p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="table-wrapper">
+
+                        <table>
+
+                            <thead>
+
+                                <tr>
+                                    <th>CLIENTE</th>
+                                    <th>TIPO</th>
+                                    <th>DATA</th>
+                                    <th>RESPONSÁVEL</th>
+                                    <th>STATUS</th>
+                                    <th>AÇÃO</th>
+                                </tr>
+
+                            </thead>
+
+                            <tbody id="followTable">
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 PRODUTOS
+            ================================================== -->
+
+            <section class="page-section" id="produtos">
+
+                <div class="page-heading">
+
+                    <div>
+                        <span class="eyebrow">CATÁLOGO</span>
+
+                        <h1>
+                            Produtos
+                            <span>Crystal Palace</span>
+                        </h1>
+
+                        <p>
+                            Instrumentos e acessórios cadastrados no CRM.
+                        </p>
+                    </div>
+
+                    <button class="primary-button" onclick="openModal('productModal')">
+                        <i class="fa-solid fa-plus"></i>
+                        Novo produto
+                    </button>
+
+                </div>
+
+
+                <div class="product-grid" id="productGrid">
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 RELATÓRIOS
+            ================================================== -->
+
+            <section class="page-section" id="relatorios">
+
+                <div class="page-heading">
+
+                    <div>
+                        <span class="eyebrow">INTELIGÊNCIA</span>
+
+                        <h1>
+                            Relatórios
+                            <span>e indicadores</span>
+                        </h1>
+
+                        <p>
+                            Indicadores de desempenho do relacionamento com clientes.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="report-grid">
+
+                    <div class="report-card">
+
+                        <span class="report-label">TAXA DE RECOMPRA</span>
+
+                        <strong id="repurchaseRate">0%</strong>
+
+                        <div class="progress">
+                            <span id="repurchaseBar"></span>
+                        </div>
+
+                        <small>
+                            Clientes que realizaram mais de uma compra
+                        </small>
+
+                    </div>
+
+
+                    <div class="report-card">
+
+                        <span class="report-label">RETENÇÃO</span>
+
+                        <strong id="retentionRate">0%</strong>
+
+                        <div class="progress">
+                            <span id="retentionBar"></span>
+                        </div>
+
+                        <small>
+                            Clientes ativos na base
+                        </small>
+
+                    </div>
+
+
+                    <div class="report-card">
+
+                        <span class="report-label">CONVERSÃO</span>
+
+                        <strong id="conversionRate">0%</strong>
+
+                        <div class="progress">
+                            <span id="conversionBar"></span>
+                        </div>
+
+                        <small>
+                            Leads convertidos em vendas
+                        </small>
+
+                    </div>
+
+
+                    <div class="report-card">
+
+                        <span class="report-label">SATISFAÇÃO</span>
+
+                        <strong id="reportSatisfaction">0%</strong>
+
+                        <div class="progress">
+                            <span id="satisfactionBar"></span>
+                        </div>
+
+                        <small>
+                            Avaliação média dos clientes
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <h2>Resumo do CRM</h2>
+                            <p>Indicadores consolidados</p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="indicator-table">
+
+                        <div class="indicator-row header">
+                            <span>INDICADOR</span>
+                            <span>RESULTADO</span>
+                            <span>STATUS</span>
+                        </div>
+
+                        <div class="indicator-row">
+                            <span>Clientes cadastrados</span>
+                            <strong id="indicatorClients">0</strong>
+                            <em class="good">Ativo</em>
+                        </div>
+
+                        <div class="indicator-row">
+                            <span>Faturamento</span>
+                            <strong id="indicatorRevenue">R$ 0</strong>
+                            <em class="good">Monitorado</em>
+                        </div>
+
+                        <div class="indicator-row">
+                            <span>Ticket médio</span>
+                            <strong id="indicatorTicket">R$ 0</strong>
+                            <em class="good">Monitorado</em>
+                        </div>
+
+                        <div class="indicator-row">
+                            <span>Ordens de serviço</span>
+                            <strong id="indicatorServices">0</strong>
+                            <em class="good">Monitorado</em>
+                        </div>
+
+                        <div class="indicator-row">
+                            <span>Atividades de pós-venda</span>
+                            <strong id="indicatorFollow">0</strong>
+                            <em class="good">Monitorado</em>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
         </div>
 
-    </section>
+    </main>
 
 
-    <!-- ================= INTRODUÇÃO ================= -->
+    <!-- =========================================================
+         MODAL CLIENTE
+    ========================================================== -->
 
-    <section class="section" id="crm">
+    <div class="modal-overlay" id="clientModal">
 
-        <div class="section-title">
+        <div class="modal">
 
-            <p>01 • CONCEITO</p>
+            <button class="close-modal" onclick="closeModal('clientModal')">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
 
-            <h2>
-                O que é <span>CRM?</span>
-            </h2>
+            <div class="modal-heading">
+                <span class="modal-icon">
+                    <i class="fa-solid fa-user-plus"></i>
+                </span>
+
+                <div>
+                    <h2>Novo cliente</h2>
+                    <p>Cadastre um novo cliente no CRM.</p>
+                </div>
+            </div>
+
+
+            <form id="clientForm">
+
+                <div class="form-grid">
+
+                    <div class="form-group full">
+                        <label>Nome completo</label>
+                        <input
+                            type="text"
+                            id="clientName"
+                            placeholder="Ex.: João da Silva"
+                            required
+                        >
+                    </div>
+
+
+                    <div class="form-group">
+                        <label>E-mail</label>
+                        <input
+                            type="email"
+                            id="clientEmail"
+                            placeholder="cliente@email.com"
+                            required
+                        >
+                    </div>
+
+
+                    <div class="form-group">
+                        <label>Telefone</label>
+                        <input
+                            type="text"
+                            id="clientPhone"
+                            placeholder="(41) 99999-9999"
+                            required
+                        >
+                    </div>
+
+
+                    <div class="form-group">
+                        <label>Perfil</label>
+
+                        <select id="clientProfile">
+
+                            <option value="Guitarrista">Guitarrista</option>
+                            <option value="Baixista">Baixista</option>
+                            <option value="Baterista">Baterista</option>
+                            <option value="Tecladista">Tecladista</option>
+                            <option value="Vocalista">Vocalista</option>
+                            <option value="Produtor">Produtor</option>
+                            <option value="Iniciante">Iniciante</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+                        <label>Status</label>
+
+                        <select id="clientStatus">
+
+                            <option value="Ativo">Ativo</option>
+                            <option value="VIP">VIP</option>
+                            <option value="Inativo">Inativo</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <div class="modal-actions">
+
+                    <button
+                        type="button"
+                        class="secondary-button"
+                        onclick="closeModal('clientModal')"
+                    >
+                        Cancelar
+                    </button>
+
+                    <button type="submit" class="primary-button">
+                        <i class="fa-solid fa-check"></i>
+                        Cadastrar cliente
+                    </button>
+
+                </div>
+
+            </form>
 
         </div>
 
-        <div class="intro-grid">
+    </div>
 
-            <div class="glass-card">
 
-                <div class="icon">👥</div>
+    <!-- =========================================================
+         MODAL VENDA
+    ========================================================== -->
 
-                <h3>Customer Relationship Management</h3>
+    <div class="modal-overlay" id="saleModal">
 
-                <p>
-                    CRM significa Gestão do Relacionamento com o Cliente.
-                    É uma estratégia utilizada para organizar informações,
-                    acompanhar clientes e melhorar todas as etapas da
-                    experiência de compra.
-                </p>
+        <div class="modal">
 
-            </div>
+            <button class="close-modal" onclick="closeModal('saleModal')">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
 
-            <div class="glass-card highlight">
+            <div class="modal-heading">
 
-                <div class="icon">🎯</div>
+                <span class="modal-icon">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </span>
 
-                <h3>Objetivo na Crystal Palace</h3>
-
-                <p>
-                    Criar um relacionamento contínuo com o músico,
-                    desde o primeiro contato com a loja até a compra,
-                    assistência técnica e pós-venda.
-                </p>
+                <div>
+                    <h2>Registrar venda</h2>
+                    <p>Adicione uma nova venda ao CRM.</p>
+                </div>
 
             </div>
+
+
+            <form id="saleForm">
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+                        <label>Cliente</label>
+
+                        <select id="saleClient" required>
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+                        <label>Produto</label>
+
+                        <select id="saleProduct" required>
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+                        <label>Valor da venda</label>
+
+                        <input
+                            type="number"
+                            id="saleValue"
+                            step="0.01"
+                            min="0"
+                            placeholder="0,00"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+                        <label>Canal</label>
+
+                        <select id="saleChannel">
+
+                            <option value="Loja física">Loja física</option>
+                            <option value="E-commerce">E-commerce</option>
+                            <option value="WhatsApp">WhatsApp</option>
+                            <option value="Instagram">Instagram</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+                        <label>Status</label>
+
+                        <select id="saleStatus">
+
+                            <option value="Pago">Pago</option>
+                            <option value="Pendente">Pendente</option>
+                            <option value="Enviado">Enviado</option>
+                            <option value="Concluído">Concluído</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <div class="modal-actions">
+
+                    <button
+                        type="button"
+                        class="secondary-button"
+                        onclick="closeModal('saleModal')"
+                    >
+                        Cancelar
+                    </button>
+
+                    <button type="submit" class="primary-button">
+                        <i class="fa-solid fa-check"></i>
+                        Registrar venda
+                    </button>
+
+                </div>
+
+            </form>
 
         </div>
 
-    </section>
+    </div>
 
 
-    <!-- ================= OBJETIVOS ================= -->
+    <!-- =========================================================
+         MODAL ASSISTÊNCIA
+    ========================================================== -->
 
-    <section class="section dark-section">
+    <div class="modal-overlay" id="serviceModal">
 
-        <div class="section-title">
+        <div class="modal">
 
-            <p>02 • PLANEJAMENTO</p>
+            <button class="close-modal" onclick="closeModal('serviceModal')">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
 
-            <h2>
-                Objetivos do <span>CRM</span>
-            </h2>
+            <div class="modal-heading">
+
+                <span class="modal-icon">
+                    <i class="fa-solid fa-screwdriver-wrench"></i>
+                </span>
+
+                <div>
+                    <h2>Nova ordem de serviço</h2>
+                    <p>Registre um equipamento para manutenção.</p>
+                </div>
+
+            </div>
+
+
+            <form id="serviceForm">
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+                        <label>Cliente</label>
+
+                        <select id="serviceClient" required>
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+                        <label>Equipamento</label>
+
+                        <input
+                            type="text"
+                            id="serviceEquipment"
+                            placeholder="Ex.: Fender Stratocaster"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group full">
+                        <label>Problema apresentado</label>
+
+                        <textarea
+                            id="serviceProblem"
+                            placeholder="Descreva o problema..."
+                            required
+                        ></textarea>
+
+                    </div>
+
+
+                    <div class="form-group">
+                        <label>Prioridade</label>
+
+                        <select id="servicePriority">
+
+                            <option value="Normal">Normal</option>
+                            <option value="Alta">Alta</option>
+                            <option value="Urgente">Urgente</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+                        <label>Status</label>
+
+                        <select id="serviceStatus">
+
+                            <option value="Aberta">Aberta</option>
+                            <option value="Em manutenção">Em manutenção</option>
+                            <option value="Aguardando cliente">Aguardando cliente</option>
+                            <option value="Concluída">Concluída</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <div class="modal-actions">
+
+                    <button
+                        type="button"
+                        class="secondary-button"
+                        onclick="closeModal('serviceModal')"
+                    >
+                        Cancelar
+                    </button>
+
+                    <button type="submit" class="primary-button">
+                        <i class="fa-solid fa-check"></i>
+                        Criar ordem
+                    </button>
+
+                </div>
+
+            </form>
 
         </div>
 
-        <div class="cards">
+    </div>
 
-            <div class="card">
-                <span>01</span>
-                <h3>Conhecer o cliente</h3>
-                <p>
-                    Registrar preferências, histórico de compras,
-                    instrumentos e interesses.
-                </p>
+
+    <!-- =========================================================
+         MODAL PÓS VENDA
+    ========================================================== -->
+
+    <div class="modal-overlay" id="followModal">
+
+        <div class="modal">
+
+            <button class="close-modal" onclick="closeModal('followModal')">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="modal-heading">
+
+                <span class="modal-icon">
+                    <i class="fa-solid fa-heart"></i>
+                </span>
+
+                <div>
+                    <h2>Nova atividade</h2>
+                    <p>Registre uma ação de pós-venda.</p>
+                </div>
+
             </div>
 
-            <div class="card">
-                <span>02</span>
-                <h3>Aumentar vendas</h3>
-                <p>
-                    Criar ofertas personalizadas e oportunidades
-                    de venda para cada perfil.
-                </p>
-            </div>
 
-            <div class="card">
-                <span>03</span>
-                <h3>Fidelizar</h3>
-                <p>
-                    Transformar compradores ocasionais em clientes
-                    recorrentes.
-                </p>
-            </div>
+            <form id="followForm">
 
-            <div class="card">
-                <span>04</span>
-                <h3>Melhorar atendimento</h3>
-                <p>
-                    Centralizar informações e acompanhar solicitações
-                    de forma organizada.
-                </p>
-            </div>
+                <div class="form-grid">
+
+                    <div class="form-group">
+                        <label>Cliente</label>
+
+                        <select id="followClient" required>
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+                        <label>Tipo</label>
+
+                        <select id="followType">
+
+                            <option value="Ligação">Ligação</option>
+                            <option value="WhatsApp">WhatsApp</option>
+                            <option value="E-mail">E-mail</option>
+                            <option value="Pesquisa de satisfação">Pesquisa de satisfação</option>
+                            <option value="Oferta personalizada">Oferta personalizada</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+                        <label>Status</label>
+
+                        <select id="followStatus">
+
+                            <option value="Pendente">Pendente</option>
+                            <option value="Realizado">Realizado</option>
+                            <option value="Agendado">Agendado</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+                        <label>Responsável</label>
+
+                        <input
+                            type="text"
+                            id="followResponsible"
+                            value="Equipe Crystal Palace"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="modal-actions">
+
+                    <button
+                        type="button"
+                        class="secondary-button"
+                        onclick="closeModal('followModal')"
+                    >
+                        Cancelar
+                    </button>
+
+                    <button type="submit" class="primary-button">
+                        <i class="fa-solid fa-check"></i>
+                        Salvar atividade
+                    </button>
+
+                </div>
+
+            </form>
 
         </div>
 
-    </section>
+    </div>
 
 
-    <!-- ================= SETORES ================= -->
+    <!-- =========================================================
+         MODAL PRODUTO
+    ========================================================== -->
 
-    <section class="section" id="setores">
+    <div class="modal-overlay" id="productModal">
 
-        <div class="section-title">
+        <div class="modal">
 
-            <p>03 • OPERAÇÃO</p>
+            <button class="close-modal" onclick="closeModal('productModal')">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
 
-            <h2>
-                CRM em todos os <span>setores</span>
-            </h2>
+            <div class="modal-heading">
+
+                <span class="modal-icon">
+                    <i class="fa-solid fa-guitar"></i>
+                </span>
+
+                <div>
+                    <h2>Novo produto</h2>
+                    <p>Cadastre um produto no catálogo.</p>
+                </div>
+
+            </div>
+
+
+            <form id="productForm">
+
+                <div class="form-grid">
+
+                    <div class="form-group full">
+
+                        <label>Nome do produto</label>
+
+                        <input
+                            type="text"
+                            id="productName"
+                            placeholder="Ex.: Gibson Les Paul"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Categoria</label>
+
+                        <select id="productCategory">
+
+                            <option value="Guitarra">Guitarra</option>
+                            <option value="Violão">Violão</option>
+                            <option value="Baixo">Baixo</option>
+                            <option value="Bateria">Bateria</option>
+                            <option value="Teclado">Teclado</option>
+                            <option value="Acessório">Acessório</option>
+                            <option value="Áudio">Áudio</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Preço</label>
+
+                        <input
+                            type="number"
+                            id="productPrice"
+                            min="0"
+                            step="0.01"
+                            placeholder="0,00"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Estoque</label>
+
+                        <input
+                            type="number"
+                            id="productStock"
+                            min="0"
+                            placeholder="0"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="modal-actions">
+
+                    <button
+                        type="button"
+                        class="secondary-button"
+                        onclick="closeModal('productModal')"
+                    >
+                        Cancelar
+                    </button>
+
+                    <button type="submit" class="primary-button">
+                        <i class="fa-solid fa-check"></i>
+                        Cadastrar produto
+                    </button>
+
+                </div>
+
+            </form>
 
         </div>
 
+    </div>
 
-        <div class="sector">
 
-            <div class="sector-number">01</div>
+    <!-- =========================================================
+         TOAST
+    ========================================================== -->
 
-            <div class="sector-content">
+    <div class="toast" id="toast">
 
-                <div class="sector-icon">🛒</div>
-
-                <h3>Vendas Online</h3>
-
-                <p>
-                    O CRM registra o comportamento do cliente no site,
-                    produtos visualizados, carrinho, compras realizadas
-                    e preferências.
-                </p>
-
-                <ul>
-                    <li>Cadastro do cliente</li>
-                    <li>Histórico de compras</li>
-                    <li>Produtos visualizados</li>
-                    <li>Abandono de carrinho</li>
-                    <li>Ofertas personalizadas</li>
-                </ul>
-
-            </div>
-
+        <div class="toast-icon">
+            <i class="fa-solid fa-check"></i>
         </div>
 
-
-        <div class="sector reverse">
-
-            <div class="sector-number">02</div>
-
-            <div class="sector-content">
-
-                <div class="sector-icon">🏪</div>
-
-                <h3>Vendas Presenciais</h3>
-
-                <p>
-                    O vendedor consulta o histórico do cliente e consegue
-                    oferecer instrumentos e acessórios de acordo com seu
-                    perfil musical.
-                </p>
-
-                <ul>
-                    <li>Cadastro no ponto de venda</li>
-                    <li>Perfil musical</li>
-                    <li>Histórico de compras</li>
-                    <li>Preferências</li>
-                    <li>Programa de fidelidade</li>
-                </ul>
-
-            </div>
-
+        <div>
+            <strong id="toastTitle">Sucesso!</strong>
+            <span id="toastMessage">Operação realizada.</span>
         </div>
 
+    </div>
 
-        <div class="sector">
 
-            <div class="sector-number">03</div>
+    <!-- =========================================================
+         SCRIPTS
+    ========================================================== -->
 
-            <div class="sector-content">
-
-                <div class="sector-icon">🔧</div>
-
-                <h3>Assistência Técnica</h3>
-
-                <p>
-                    O CRM registra equipamentos enviados para manutenção,
-                    problemas identificados, serviços realizados e
-                    histórico técnico.
-                </p>
-
-                <ul>
-                    <li>Ordem de serviço</li>
-                    <li>Equipamento</li>
-                    <li>Problema apresentado</li>
-                    <li>Prazo de manutenção</li>
-                    <li>Histórico técnico</li>
-                </ul>
-
-            </div>
-
-        </div>
-
-
-        <div class="sector reverse">
-
-            <div class="sector-number">04</div>
-
-            <div class="sector-content">
-
-                <div class="sector-icon">❤️</div>
-
-                <h3>Pós-venda</h3>
-
-                <p>
-                    Depois da compra, a Crystal Palace continua em contato
-                    com o cliente para garantir satisfação e estimular
-                    novas compras.
-                </p>
-
-                <ul>
-                    <li>Pesquisa de satisfação</li>
-                    <li>Contato pós-compra</li>
-                    <li>Garantia</li>
-                    <li>Ofertas complementares</li>
-                    <li>Fidelização</li>
-                </ul>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= JORNADA ================= -->
-
-    <section class="section dark-section" id="jornada">
-
-        <div class="section-title">
-
-            <p>04 • EXPERIÊNCIA</p>
-
-            <h2>
-                Jornada do <span>cliente</span>
-            </h2>
-
-        </div>
-
-
-        <div class="timeline">
-
-            <div class="timeline-item">
-
-                <div class="timeline-number">01</div>
-
-                <h3>Descoberta</h3>
-
-                <p>
-                    Cliente conhece a Crystal Palace através
-                    das redes sociais, site ou loja física.
-                </p>
-
-            </div>
-
-
-            <div class="timeline-item">
-
-                <div class="timeline-number">02</div>
-
-                <h3>Interesse</h3>
-
-                <p>
-                    Cliente pesquisa instrumentos, preços,
-                    marcas e características.
-                </p>
-
-            </div>
-
-
-            <div class="timeline-item">
-
-                <div class="timeline-number">03</div>
-
-                <h3>Compra</h3>
-
-                <p>
-                    Compra realizada pela loja online
-                    ou presencialmente.
-                </p>
-
-            </div>
-
-
-            <div class="timeline-item">
-
-                <div class="timeline-number">04</div>
-
-                <h3>Pós-venda</h3>
-
-                <p>
-                    Cliente recebe acompanhamento,
-                    suporte e pesquisa de satisfação.
-                </p>
-
-            </div>
-
-
-            <div class="timeline-item">
-
-                <div class="timeline-number">05</div>
-
-                <h3>Fidelização</h3>
-
-                <p>
-                    CRM identifica novas oportunidades
-                    e envia ofertas personalizadas.
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= DADOS ================= -->
-
-    <section class="section">
-
-        <div class="section-title">
-
-            <p>05 • BASE DE DADOS</p>
-
-            <h2>
-                Perfil do <span>cliente</span>
-            </h2>
-
-        </div>
-
-
-        <div class="profile-grid">
-
-            <div class="profile-card">
-                <span>👤</span>
-                <h3>Dados pessoais</h3>
-                <p>Nome, contato, cidade e informações de cadastro.</p>
-            </div>
-
-            <div class="profile-card">
-                <span>🎸</span>
-                <h3>Perfil musical</h3>
-                <p>Instrumento, estilo musical, nível e preferências.</p>
-            </div>
-
-            <div class="profile-card">
-                <span>💰</span>
-                <h3>Histórico de compras</h3>
-                <p>Produtos comprados, valores e frequência de compra.</p>
-            </div>
-
-            <div class="profile-card">
-                <span>🔧</span>
-                <h3>Histórico técnico</h3>
-                <p>Manutenções, garantias e serviços realizados.</p>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= INDICADORES ================= -->
-
-    <section class="section metrics-section" id="indicadores">
-
-        <div class="section-title">
-
-            <p>06 • RESULTADOS</p>
-
-            <h2>
-                Indicadores <span>de desempenho</span>
-            </h2>
-
-        </div>
-
-
-        <div class="metrics">
-
-            <div class="metric">
-                <strong>↑</strong>
-                <h3>Taxa de conversão</h3>
-                <p>Percentual de clientes que realizam uma compra.</p>
-            </div>
-
-            <div class="metric">
-                <strong>R$</strong>
-                <h3>Ticket médio</h3>
-                <p>Valor médio gasto por cliente em cada compra.</p>
-            </div>
-
-            <div class="metric">
-                <strong>🔄</strong>
-                <h3>Taxa de recompra</h3>
-                <p>Percentual de clientes que voltam a comprar.</p>
-            </div>
-
-            <div class="metric">
-                <strong>⭐</strong>
-                <h3>NPS</h3>
-                <p>Mede a satisfação e a possibilidade de recomendação.</p>
-            </div>
-
-            <div class="metric">
-                <strong>⏱</strong>
-                <h3>Tempo de atendimento</h3>
-                <p>Tempo necessário para responder o cliente.</p>
-            </div>
-
-            <div class="metric">
-                <strong>❤️</strong>
-                <h3>Retenção</h3>
-                <p>Percentual de clientes mantidos pela empresa.</p>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= FUNIL ================= -->
-
-    <section class="section dark-section">
-
-        <div class="section-title">
-
-            <p>07 • VENDAS</p>
-
-            <h2>
-                Funil de <span>CRM</span>
-            </h2>
-
-        </div>
-
-
-        <div class="funnel">
-
-            <div class="funnel-step">
-                <span>01</span>
-                <h3>LEAD</h3>
-                <p>Cliente demonstra interesse.</p>
-            </div>
-
-            <div class="funnel-step">
-                <span>02</span>
-                <h3>PROSPECÇÃO</h3>
-                <p>Equipe entra em contato.</p>
-            </div>
-
-            <div class="funnel-step">
-                <span>03</span>
-                <h3>NEGOCIAÇÃO</h3>
-                <p>Cliente avalia produto e condições.</p>
-            </div>
-
-            <div class="funnel-step">
-                <span>04</span>
-                <h3>VENDA</h3>
-                <p>Compra é concluída.</p>
-            </div>
-
-            <div class="funnel-step">
-                <span>05</span>
-                <h3>FIDELIZAÇÃO</h3>
-                <p>Cliente volta a comprar.</p>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= EXECUÇÃO ================= -->
-
-    <section class="section" id="execucao">
-
-        <div class="section-title">
-
-            <p>08 • EXECUÇÃO</p>
-
-            <h2>
-                Como colocar o CRM em <span>prática</span>
-            </h2>
-
-        </div>
-
-
-        <div class="execution">
-
-            <div class="execution-step">
-                <span>01</span>
-                <h3>Implantação</h3>
-                <p>
-                    Escolher a ferramenta de CRM e centralizar
-                    os dados dos clientes.
-                </p>
-            </div>
-
-            <div class="execution-step">
-                <span>02</span>
-                <h3>Integração</h3>
-                <p>
-                    Integrar loja física, e-commerce,
-                    assistência e canais de atendimento.
-                </p>
-            </div>
-
-            <div class="execution-step">
-                <span>03</span>
-                <h3>Treinamento</h3>
-                <p>
-                    Capacitar vendedores, técnicos e equipe
-                    de atendimento.
-                </p>
-            </div>
-
-            <div class="execution-step">
-                <span>04</span>
-                <h3>Acompanhamento</h3>
-                <p>
-                    Monitorar os indicadores e corrigir
-                    problemas encontrados.
-                </p>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= ESTRATÉGIAS ================= -->
-
-    <section class="section strategy-section">
-
-        <div class="section-title">
-
-            <p>09 • ESTRATÉGIAS</p>
-
-            <h2>
-                Ações para <span>fidelizar</span>
-            </h2>
-
-        </div>
-
-
-        <div class="strategy-grid">
-
-            <div>
-                <span>🎵</span>
-                <h3>Recomendação personalizada</h3>
-                <p>
-                    Sugerir produtos relacionados ao instrumento
-                    comprado pelo cliente.
-                </p>
-            </div>
-
-            <div>
-                <span>📩</span>
-                <h3>Comunicação segmentada</h3>
-                <p>
-                    Enviar mensagens diferentes de acordo
-                    com o perfil de cada cliente.
-                </p>
-            </div>
-
-            <div>
-                <span>🎁</span>
-                <h3>Programa de fidelidade</h3>
-                <p>
-                    Criar benefícios para clientes recorrentes.
-                </p>
-            </div>
-
-            <div>
-                <span>🔔</span>
-                <h3>Lembretes inteligentes</h3>
-                <p>
-                    Avisar sobre manutenção, acessórios,
-                    garantia e oportunidades de compra.
-                </p>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= RESULTADO ================= -->
-
-    <section class="final-section">
-
-        <div class="final-content">
-
-            <p>CRYSTAL PALACE • CRM</p>
-
-            <h2>
-                MAIS QUE UMA VENDA.<br>
-                <span>UMA RELAÇÃO COM O MÚSICO.</span>
-            </h2>
-
-            <p class="final-text">
-                Com um CRM estruturado, a Crystal Palace consegue
-                conhecer melhor seus clientes, melhorar o atendimento,
-                aumentar as vendas, acompanhar a assistência técnica
-                e criar relacionamentos duradouros.
-            </p>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= FOOTER ================= -->
-
-    <footer>
-
-        <div class="logo">
-            <span>🎸</span>
-            <div>
-                <strong>CRYSTAL</strong>
-                <small>PALACE</small>
-            </div>
-        </div>
-
-        <p>
-            Projeto acadêmico • Planejamento e execução de CRM
-        </p>
-
-        <p>
-            © 2026 Crystal Palace
-        </p>
-
-    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 
     <script>
 
-        // Rolagem suave dos links do menu
+        /* ========================================================
+           BANCO LOCAL DO CRM
+        ======================================================== */
 
-        document.querySelectorAll('a[href^="#"]').forEach(link => {
+        const defaultData = {
 
-            link.addEventListener('click', function(e) {
+            clients: [
+                {
+                    id: 1,
+                    name: "Lucas Martins",
+                    email: "lucas@email.com",
+                    phone: "(41) 98888-1111",
+                    profile: "Guitarrista",
+                    status: "VIP",
+                    lastPurchase: "12/09/2026",
+                    total: 5890
+                },
+                {
+                    id: 2,
+                    name: "Mariana Souza",
+                    email: "mariana@email.com",
+                    phone: "(41) 97777-2222",
+                    profile: "Vocalista",
+                    status: "Ativo",
+                    lastPurchase: "10/09/2026",
+                    total: 2390
+                },
+                {
+                    id: 3,
+                    name: "Pedro Henrique",
+                    email: "pedro@email.com",
+                    phone: "(41) 96666-3333",
+                    profile: "Baterista",
+                    status: "Ativo",
+                    lastPurchase: "08/09/2026",
+                    total: 4200
+                },
+                {
+                    id: 4,
+                    name: "Ana Clara",
+                    email: "ana@email.com",
+                    phone: "(41) 95555-4444",
+                    profile: "Tecladista",
+                    status: "VIP",
+                    lastPurchase: "05/09/2026",
+                    total: 7850
+                },
+                {
+                    id: 5,
+                    name: "Rafael Costa",
+                    email: "rafael@email.com",
+                    phone: "(41) 94444-5555",
+                    profile: "Baixista",
+                    status: "Ativo",
+                    lastPurchase: "01/09/2026",
+                    total: 3150
+                }
+            ],
+
+
+            sales: [
+                {
+                    id: "CP-1001",
+                    client: "Lucas Martins",
+                    product: "Fender Stratocaster Player",
+                    date: "12/09/2026",
+                    channel: "Loja física",
+                    value: 5890,
+                    status: "Concluído"
+                },
+                {
+                    id: "CP-1002",
+                    client: "Mariana Souza",
+                    product: "Microfone Shure SM58",
+                    date: "10/09/2026",
+                    channel: "E-commerce",
+                    value: 2390,
+                    status: "Enviado"
+                },
+                {
+                    id: "CP-1003",
+                    client: "Pedro Henrique",
+                    product: "Pearl Export EXX",
+                    date: "08/09/2026",
+                    channel: "Loja física",
+                    value: 4200,
+                    status: "Pago"
+                },
+                {
+                    id: "CP-1004",
+                    client: "Ana Clara",
+                    product: "Yamaha PSR",
+                    date: "05/09/2026",
+                    channel: "E-commerce",
+                    value: 7850,
+                    status: "Concluído"
+                },
+                {
+                    id: "CP-1005",
+                    client: "Rafael Costa",
+                    product: "Fender Jazz Bass",
+                    date: "01/09/2026",
+                    channel: "WhatsApp",
+                    value: 3150,
+                    status: "Concluído"
+                }
+            ],
+
+
+            services: [
+                {
+                    id: "OS-001",
+                    client: "Lucas Martins",
+                    equipment: "Fender Stratocaster",
+                    problem: "Regulagem e troca de cordas",
+                    priority: "Normal",
+                    status: "Em manutenção"
+                },
+                {
+                    id: "OS-002",
+                    client: "Mariana Souza",
+                    equipment: "Shure SM58",
+                    problem: "Falha no sinal de áudio",
+                    priority: "Alta",
+                    status: "Aguardando cliente"
+                },
+                {
+                    id: "OS-003",
+                    client: "Pedro Henrique",
+                    equipment: "Pearl Export",
+                    problem: "Ajuste de pele",
+                    priority: "Normal",
+                    status: "Concluída"
+                }
+            ],
+
+
+            follows: [
+                {
+                    id: 1,
+                    client: "Lucas Martins",
+                    type: "Pesquisa de satisfação",
+                    date: "13/09/2026",
+                    responsible: "Equipe Crystal Palace",
+                    status: "Realizado"
+                },
+                {
+                    id: 2,
+                    client: "Mariana Souza",
+                    type: "WhatsApp",
+                    date: "13/09/2026",
+                    responsible: "Equipe Crystal Palace",
+                    status: "Pendente"
+                },
+                {
+                    id: 3,
+                    client: "Ana Clara",
+                    type: "Oferta personalizada",
+                    date: "14/09/2026",
+                    responsible: "Equipe Crystal Palace",
+                    status: "Agendado"
+                }
+            ],
+
+
+            products: [
+                {
+                    id: 1,
+                    name: "Fender Stratocaster Player",
+                    category: "Guitarra",
+                    price: 5890,
+                    stock: 8
+                },
+                {
+                    id: 2,
+                    name: "Gibson Les Paul Studio",
+                    category: "Guitarra",
+                    price: 8900,
+                    stock: 4
+                },
+                {
+                    id: 3,
+                    name: "Yamaha PSR",
+                    category: "Teclado",
+                    price: 7850,
+                    stock: 6
+                },
+                {
+                    id: 4,
+                    name: "Pearl Export EXX",
+                    category: "Bateria",
+                    price: 4200,
+                    stock: 3
+                },
+                {
+                    id: 5,
+                    name: "Shure SM58",
+                    category: "Áudio",
+                    price: 2390,
+                    stock: 15
+                },
+                {
+                    id: 6,
+                    name: "Fender Jazz Bass",
+                    category: "Baixo",
+                    price: 3150,
+                    stock: 7
+                }
+            ]
+
+        };
+
+
+        let db = JSON.parse(
+            localStorage.getItem("crystalPalaceCRM")
+        ) || defaultData;
+
+
+        function saveDB() {
+
+            localStorage.setItem(
+                "crystalPalaceCRM",
+                JSON.stringify(db)
+            );
+
+        }
+
+
+        /* ========================================================
+           UTILIDADES
+        ======================================================== */
+
+        function money(value) {
+
+            return Number(value).toLocaleString(
+                "pt-BR",
+                {
+                    style: "currency",
+                    currency: "BRL"
+                }
+            );
+
+        }
+
+
+        function today() {
+
+            return new Date().toLocaleDateString("pt-BR");
+
+        }
+
+
+        function escapeHTML(text) {
+
+            const div = document.createElement("div");
+
+            div.textContent = text;
+
+            return div.innerHTML;
+
+        }
+
+
+        function statusClass(status) {
+
+            const normalized = status
+                .toLowerCase()
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "")
+                .replace(/\s/g, "-");
+
+            return normalized;
+
+        }
+
+
+        /* ========================================================
+           NAVEGAÇÃO
+        ======================================================== */
+
+        const menuItems =
+            document.querySelectorAll(".menu-item");
+
+
+        menuItems.forEach(item => {
+
+            item.addEventListener("click", () => {
+
+                const section = item.dataset.section;
+
+                showSection(section);
+
+            });
+
+        });
+
+
+        function showSection(sectionId) {
+
+            document
+                .querySelectorAll(".page-section")
+                .forEach(section => {
+
+                    section.classList.remove("active");
+
+                });
+
+
+            document
+                .querySelectorAll(".menu-item")
+                .forEach(item => {
+
+                    item.classList.remove("active");
+
+                });
+
+
+            const section =
+                document.getElementById(sectionId);
+
+            const menu =
+                document.querySelector(
+                    `[data-section="${sectionId}"]`
+                );
+
+
+            if (section) {
+
+                section.classList.add("active");
+
+            }
+
+
+            if (menu) {
+
+                menu.classList.add("active");
+
+            }
+
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+
+            renderAll();
+
+        }
+
+
+        /* ========================================================
+           MODAIS
+        ======================================================== */
+
+        function openModal(id) {
+
+            const modal =
+                document.getElementById(id);
+
+            if (modal) {
+
+                modal.classList.add("show");
+
+                document.body.classList.add("modal-open");
+
+                populateClientSelects();
+
+                populateProductSelect();
+
+            }
+
+        }
+
+
+        function closeModal(id) {
+
+            const modal =
+                document.getElementById(id);
+
+            if (modal) {
+
+                modal.classList.remove("show");
+
+                document.body.classList.remove("modal-open");
+
+            }
+
+        }
+
+
+        document
+            .querySelectorAll(".modal-overlay")
+            .forEach(overlay => {
+
+                overlay.addEventListener("click", e => {
+
+                    if (e.target === overlay) {
+
+                        overlay.classList.remove("show");
+
+                        document.body.classList.remove(
+                            "modal-open"
+                        );
+
+                    }
+
+                });
+
+            });
+
+
+        /* ========================================================
+           CLIENTES
+        ======================================================== */
+
+        function renderClients() {
+
+            const tbody =
+                document.getElementById("clientsTable");
+
+            const search =
+                (
+                    document.getElementById("clientSearch")?.value
+                    || ""
+                ).toLowerCase();
+
+            const filter =
+                document.getElementById("clientFilter")?.value
+                || "all";
+
+
+            let clients = db.clients.filter(client => {
+
+                const matchesSearch =
+                    client.name.toLowerCase().includes(search) ||
+                    client.email.toLowerCase().includes(search) ||
+                    client.profile.toLowerCase().includes(search);
+
+
+                const matchesFilter =
+                    filter === "all" ||
+                    client.status === filter;
+
+
+                return matchesSearch && matchesFilter;
+
+            });
+
+
+            if (!clients.length) {
+
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="7" class="empty">
+                            Nenhum cliente encontrado.
+                        </td>
+                    </tr>
+                `;
+
+                return;
+
+            }
+
+
+            tbody.innerHTML = clients.map(client => `
+
+                <tr>
+
+                    <td>
+
+                        <div class="table-person">
+
+                            <div class="table-avatar">
+                                ${getInitials(client.name)}
+                            </div>
+
+                            <div>
+                                <strong>${escapeHTML(client.name)}</strong>
+                                <small>${escapeHTML(client.email)}</small>
+                            </div>
+
+                        </div>
+
+                    </td>
+
+
+                    <td>
+                        ${escapeHTML(client.phone)}
+                    </td>
+
+
+                    <td>
+
+                        <span class="profile-tag">
+                            ${escapeHTML(client.profile)}
+                        </span>
+
+                    </td>
+
+
+                    <td>
+                        ${client.lastPurchase || "—"}
+                    </td>
+
+
+                    <td>
+                        <strong>${money(client.total)}</strong>
+                    </td>
+
+
+                    <td>
+
+                        <span class="status ${statusClass(client.status)}">
+                            ${escapeHTML(client.status)}
+                        </span>
+
+                    </td>
+
+
+                    <td>
+
+                        <div class="row-actions">
+
+                            <button
+                                onclick="editClient(${client.id})"
+                                title="Editar"
+                            >
+                                <i class="fa-solid fa-pen"></i>
+                            </button>
+
+                            <button
+                                onclick="deleteClient(${client.id})"
+                                title="Excluir"
+                            >
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+            `).join("");
+
+        }
+
+
+        function getInitials(name) {
+
+            return name
+                .split(" ")
+                .slice(0, 2)
+                .map(word => word[0])
+                .join("")
+                .toUpperCase();
+
+        }
+
+
+        document
+            .getElementById("clientForm")
+            .addEventListener("submit", e => {
 
                 e.preventDefault();
 
-                const target = document.querySelector(this.getAttribute('href'));
 
-                if (target) {
+                const client = {
 
-                    target.scrollIntoView({
-                        behavior: 'smooth'
-                    });
+                    id: Date.now(),
+
+                    name:
+                        document.getElementById("clientName").value,
+
+                    email:
+                        document.getElementById("clientEmail").value,
+
+                    phone:
+                        document.getElementById("clientPhone").value,
+
+                    profile:
+                        document.getElementById("clientProfile").value,
+
+                    status:
+                        document.getElementById("clientStatus").value,
+
+                    lastPurchase: "—",
+
+                    total: 0
+
+                };
+
+
+                db.clients.push(client);
+
+                saveDB();
+
+                e.target.reset();
+
+                closeModal("clientModal");
+
+                renderAll();
+
+                toast(
+                    "Cliente cadastrado",
+                    `${client.name} foi adicionado ao CRM.`
+                );
+
+            });
+
+
+        function deleteClient(id) {
+
+            const client =
+                db.clients.find(c => c.id === id);
+
+
+            if (!client) return;
+
+
+            if (
+                confirm(
+                    `Deseja excluir ${client.name} do CRM?`
+                )
+            ) {
+
+                db.clients =
+                    db.clients.filter(c => c.id !== id);
+
+                saveDB();
+
+                renderAll();
+
+                toast(
+                    "Cliente removido",
+                    "O cadastro foi excluído."
+                );
+
+            }
+
+        }
+
+
+        function editClient(id) {
+
+            const client =
+                db.clients.find(c => c.id === id);
+
+
+            if (!client) return;
+
+
+            document.getElementById("clientName").value =
+                client.name;
+
+            document.getElementById("clientEmail").value =
+                client.email;
+
+            document.getElementById("clientPhone").value =
+                client.phone;
+
+            document.getElementById("clientProfile").value =
+                client.profile;
+
+            document.getElementById("clientStatus").value =
+                client.status;
+
+
+            deleteClientWithoutConfirm(id);
+
+            openModal("clientModal");
+
+        }
+
+
+        function deleteClientWithoutConfirm(id) {
+
+            db.clients =
+                db.clients.filter(c => c.id !== id);
+
+            saveDB();
+
+        }
+
+
+        document
+            .getElementById("clientSearch")
+            .addEventListener("input", renderClients);
+
+
+        document
+            .getElementById("clientFilter")
+            .addEventListener("change", renderClients);
+
+
+        /* ========================================================
+           SELECTS
+        ======================================================== */
+
+        function populateClientSelects() {
+
+            const selects = [
+                "saleClient",
+                "serviceClient",
+                "followClient"
+            ];
+
+
+            selects.forEach(id => {
+
+                const select =
+                    document.getElementById(id);
+
+                if (!select) return;
+
+
+                const current = select.value;
+
+
+                select.innerHTML = `
+                    <option value="">
+                        Selecione um cliente
+                    </option>
+                `;
+
+
+                db.clients.forEach(client => {
+
+                    const option =
+                        document.createElement("option");
+
+                    option.value = client.name;
+
+                    option.textContent =
+                        `${client.name} — ${client.profile}`;
+
+                    select.appendChild(option);
+
+                });
+
+
+                if (current) {
+
+                    select.value = current;
 
                 }
 
             });
 
-        });
+        }
 
 
-        // Animação simples ao entrar na tela
+        function populateProductSelect() {
 
-        const observer = new IntersectionObserver((entries) => {
+            const select =
+                document.getElementById("saleProduct");
 
-            entries.forEach(entry => {
+            if (!select) return;
 
-                if (entry.isIntersecting) {
 
-                    entry.target.classList.add('visible');
+            const current = select.value;
+
+
+            select.innerHTML = `
+                <option value="">
+                    Selecione um produto
+                </option>
+            `;
+
+
+            db.products.forEach(product => {
+
+                const option =
+                    document.createElement("option");
+
+                option.value = product.name;
+
+                option.textContent =
+                    `${product.name} — ${money(product.price)}`;
+
+                select.appendChild(option);
+
+            });
+
+
+            if (current) {
+
+                select.value = current;
+
+            }
+
+        }
+
+
+        /* ========================================================
+           VENDAS
+        ======================================================== */
+
+        function renderSales() {
+
+            const tbody =
+                document.getElementById("salesTable");
+
+            const recent =
+                document.getElementById("recentSalesTable");
+
+
+            const search =
+                (
+                    document.getElementById("saleSearch")?.value
+                    || ""
+                ).toLowerCase();
+
+
+            const filter =
+                document.getElementById("saleFilter")?.value
+                || "all";
+
+
+            const sales =
+                db.sales.filter(sale => {
+
+                    const matchesSearch =
+                        sale.client.toLowerCase().includes(search) ||
+                        sale.product.toLowerCase().includes(search) ||
+                        sale.id.toLowerCase().includes(search);
+
+
+                    const matchesFilter =
+                        filter === "all" ||
+                        sale.status === filter;
+
+
+                    return matchesSearch && matchesFilter;
+
+                });
+
+
+            if (!sales.length) {
+
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="8" class="empty">
+                            Nenhuma venda encontrada.
+                        </td>
+                    </tr>
+                `;
+
+            } else {
+
+                tbody.innerHTML =
+                    sales.map(sale => saleRow(sale)).join("");
+
+            }
+
+
+            const latest =
+                [...db.sales].reverse().slice(0, 5);
+
+
+            recent.innerHTML =
+                latest.length
+                    ? latest.map(sale => recentSaleRow(sale)).join("")
+                    : `
+                        <tr>
+                            <td colspan="5" class="empty">
+                                Nenhuma venda registrada.
+                            </td>
+                        </tr>
+                    `;
+
+        }
+
+
+        function saleRow(sale) {
+
+            return `
+
+                <tr>
+
+                    <td>
+                        <span class="sale-id">
+                            ${escapeHTML(sale.id)}
+                        </span>
+                    </td>
+
+                    <td>
+                        <strong>${escapeHTML(sale.client)}</strong>
+                    </td>
+
+                    <td>
+                        ${escapeHTML(sale.product)}
+                    </td>
+
+                    <td>
+                        ${sale.date}
+                    </td>
+
+                    <td>
+                        <span class="channel">
+                            ${escapeHTML(sale.channel)}
+                        </span>
+                    </td>
+
+                    <td>
+                        <strong>${money(sale.value)}</strong>
+                    </td>
+
+                    <td>
+                        <span class="status ${statusClass(sale.status)}">
+                            ${escapeHTML(sale.status)}
+                        </span>
+                    </td>
+
+                    <td>
+                        <button
+                            class="table-delete"
+                            onclick="deleteSale('${sale.id}')"
+                        >
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </td>
+
+                </tr>
+
+            `;
+
+        }
+
+
+        function recentSaleRow(sale) {
+
+            return `
+
+                <tr>
+
+                    <td>
+
+                        <div class="table-person">
+
+                            <div class="table-avatar">
+                                ${getInitials(sale.client)}
+                            </div>
+
+                            <div>
+                                <strong>${escapeHTML(sale.client)}</strong>
+                                <small>${sale.date}</small>
+                            </div>
+
+                        </div>
+
+                    </td>
+
+                    <td>
+                        ${escapeHTML(sale.product)}
+                    </td>
+
+                    <td>
+                        <strong>${money(sale.value)}</strong>
+                    </td>
+
+                    <td>
+                        ${escapeHTML(sale.channel)}
+                    </td>
+
+                    <td>
+                        <span class="status ${statusClass(sale.status)}">
+                            ${escapeHTML(sale.status)}
+                        </span>
+                    </td>
+
+                </tr>
+
+            `;
+
+        }
+
+
+        document
+            .getElementById("saleForm")
+            .addEventListener("submit", e => {
+
+                e.preventDefault();
+
+
+                const client =
+                    document.getElementById("saleClient").value;
+
+                const product =
+                    document.getElementById("saleProduct").value;
+
+                const value =
+                    Number(
+                        document.getElementById("saleValue").value
+                    );
+
+
+                if (!client || !product || !value) {
+
+                    toast(
+                        "Atenção",
+                        "Preencha todos os campos."
+                    );
+
+                    return;
+
+                }
+
+
+                const sale = {
+
+                    id:
+                        "CP-" +
+                        Math.floor(
+                            1000 + Math.random() * 8999
+                        ),
+
+                    client,
+
+                    product,
+
+                    date: today(),
+
+                    channel:
+                        document.getElementById("saleChannel").value,
+
+                    value,
+
+                    status:
+                        document.getElementById("saleStatus").value
+
+                };
+
+
+                db.sales.push(sale);
+
+
+                const customer =
+                    db.clients.find(c => c.name === client);
+
+
+                if (customer) {
+
+                    customer.lastPurchase =
+                        sale.date;
+
+                    customer.total =
+                        Number(customer.total || 0) + value;
+
+                }
+
+
+                saveDB();
+
+                e.target.reset();
+
+                closeModal("saleModal");
+
+                renderAll();
+
+
+                toast(
+                    "Venda registrada",
+                    `${money(value)} adicionados ao faturamento.`
+                );
+
+            });
+
+
+        function deleteSale(id) {
+
+            if (!confirm("Excluir esta venda?")) return;
+
+
+            db.sales =
+                db.sales.filter(s => s.id !== id);
+
+            saveDB();
+
+            renderAll();
+
+            toast(
+                "Venda excluída",
+                "O registro foi removido."
+            );
+
+        }
+
+
+        document
+            .getElementById("saleSearch")
+            .addEventListener("input", renderSales);
+
+
+        document
+            .getElementById("saleFilter")
+            .addEventListener("change", renderSales);
+
+
+        /* ========================================================
+           ASSISTÊNCIA
+        ======================================================== */
+
+        function renderServices() {
+
+            const grid =
+                document.getElementById("serviceGrid");
+
+
+            const counts = {
+
+                aberta: 0,
+
+                manutencao: 0,
+
+                aguardando: 0,
+
+                concluida: 0
+
+            };
+
+
+            db.services.forEach(service => {
+
+                if (service.status === "Aberta")
+                    counts.aberta++;
+
+                if (service.status === "Em manutenção")
+                    counts.manutencao++;
+
+                if (service.status === "Aguardando cliente")
+                    counts.aguardando++;
+
+                if (service.status === "Concluída")
+                    counts.concluida++;
+
+            });
+
+
+            document.getElementById("serviceOpen").textContent =
+                counts.aberta;
+
+            document.getElementById("serviceProgress").textContent =
+                counts.manutencao;
+
+            document.getElementById("serviceWaiting").textContent =
+                counts.aguardando;
+
+            document.getElementById("serviceDone").textContent =
+                counts.concluida;
+
+
+            if (!db.services.length) {
+
+                grid.innerHTML = `
+                    <div class="empty-card">
+                        Nenhuma ordem de serviço cadastrada.
+                    </div>
+                `;
+
+                return;
+
+            }
+
+
+            grid.innerHTML =
+                db.services.map(service => `
+
+                    <div class="service-card">
+
+                        <div class="service-top">
+
+                            <div class="service-id">
+                                ${service.id}
+                            </div>
+
+                            <span class="status ${statusClass(service.status)}">
+                                ${escapeHTML(service.status)}
+                            </span>
+
+                        </div>
+
+
+                        <div class="service-equipment">
+
+                            <div class="equipment-icon">
+                                <i class="fa-solid fa-guitar"></i>
+                            </div>
+
+                            <div>
+                                <strong>
+                                    ${escapeHTML(service.equipment)}
+                                </strong>
+
+                                <span>
+                                    ${escapeHTML(service.client)}
+                                </span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="service-problem">
+
+                            <span>PROBLEMA</span>
+
+                            <p>
+                                ${escapeHTML(service.problem)}
+                            </p>
+
+                        </div>
+
+
+                        <div class="service-bottom">
+
+                            <div>
+                                <small>PRIORIDADE</small>
+
+                                <strong class="priority-${statusClass(service.priority)}">
+                                    ${escapeHTML(service.priority)}
+                                </strong>
+                            </div>
+
+                            <button
+                                class="danger-icon"
+                                onclick="deleteService('${service.id}')"
+                            >
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                `).join("");
+
+        }
+
+
+        document
+            .getElementById("serviceForm")
+            .addEventListener("submit", e => {
+
+                e.preventDefault();
+
+
+                const service = {
+
+                    id:
+                        "OS-" +
+                        String(db.services.length + 1)
+                            .padStart(3, "0"),
+
+                    client:
+                        document.getElementById("serviceClient").value,
+
+                    equipment:
+                        document.getElementById("serviceEquipment").value,
+
+                    problem:
+                        document.getElementById("serviceProblem").value,
+
+                    priority:
+                        document.getElementById("servicePriority").value,
+
+                    status:
+                        document.getElementById("serviceStatus").value
+
+                };
+
+
+                db.services.push(service);
+
+                saveDB();
+
+                e.target.reset();
+
+                closeModal("serviceModal");
+
+                renderAll();
+
+
+                toast(
+                    "Ordem criada",
+                    `${service.id} foi registrada com sucesso.`
+                );
+
+            });
+
+
+        function deleteService(id) {
+
+            if (!confirm("Excluir esta ordem de serviço?"))
+                return;
+
+
+            db.services =
+                db.services.filter(
+                    service => service.id !== id
+                );
+
+            saveDB();
+
+            renderAll();
+
+            toast(
+                "Ordem excluída",
+                "A ordem de serviço foi removida."
+            );
+
+        }
+
+
+        /* ========================================================
+           PÓS VENDA
+        ======================================================== */
+
+        function renderFollowUps() {
+
+            const tbody =
+                document.getElementById("followTable");
+
+
+            const pending =
+                db.follows.filter(
+                    item => item.status === "Pendente"
+                ).length;
+
+
+            const surveys =
+                db.follows.filter(
+                    item =>
+                        item.type ===
+                        "Pesquisa de satisfação"
+                ).length;
+
+
+            const loyal =
+                db.clients.filter(
+                    client =>
+                        client.status === "VIP"
+                ).length;
+
+
+            document.getElementById("followPending").textContent =
+                pending;
+
+            document.getElementById("surveyCount").textContent =
+                surveys;
+
+            document.getElementById("loyalClients").textContent =
+                loyal;
+
+
+            const satisfactionValue =
+                db.clients.length
+                    ? Math.min(
+                        100,
+                        82 + surveys * 3
+                    )
+                    : 0;
+
+
+            document.getElementById("satisfaction").textContent =
+                satisfactionValue + "%";
+
+
+            if (!db.follows.length) {
+
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="6" class="empty">
+                            Nenhuma atividade registrada.
+                        </td>
+                    </tr>
+                `;
+
+                return;
+
+            }
+
+
+            tbody.innerHTML =
+                db.follows.map(item => `
+
+                    <tr>
+
+                        <td>
+
+                            <div class="table-person">
+
+                                <div class="table-avatar">
+                                    ${getInitials(item.client)}
+                                </div>
+
+                                <div>
+                                    <strong>
+                                        ${escapeHTML(item.client)}
+                                    </strong>
+                                </div>
+
+                            </div>
+
+                        </td>
+
+                        <td>
+                            ${escapeHTML(item.type)}
+                        </td>
+
+                        <td>
+                            ${item.date}
+                        </td>
+
+                        <td>
+                            ${escapeHTML(item.responsible)}
+                        </td>
+
+                        <td>
+                            <span class="status ${statusClass(item.status)}">
+                                ${escapeHTML(item.status)}
+                            </span>
+                        </td>
+
+                        <td>
+
+                            <button
+                                class="table-delete"
+                                onclick="deleteFollow(${item.id})"
+                            >
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+                `).join("");
+
+        }
+
+
+        document
+            .getElementById("followForm")
+            .addEventListener("submit", e => {
+
+                e.preventDefault();
+
+
+                const follow = {
+
+                    id: Date.now(),
+
+                    client:
+                        document.getElementById("followClient").value,
+
+                    type:
+                        document.getElementById("followType").value,
+
+                    date: today(),
+
+                    responsible:
+                        document.getElementById("followResponsible").value,
+
+                    status:
+                        document.getElementById("followStatus").value
+
+                };
+
+
+                db.follows.push(follow);
+
+                saveDB();
+
+                e.target.reset();
+
+                closeModal("followModal");
+
+                renderAll();
+
+
+                toast(
+                    "Atividade criada",
+                    "O pós-venda foi atualizado."
+                );
+
+            });
+
+
+        function deleteFollow(id) {
+
+            if (!confirm("Excluir esta atividade?"))
+                return;
+
+
+            db.follows =
+                db.follows.filter(
+                    item => item.id !== id
+                );
+
+            saveDB();
+
+            renderAll();
+
+            toast(
+                "Atividade removida",
+                "O registro foi excluído."
+            );
+
+        }
+
+
+        /* ========================================================
+           PRODUTOS
+        ======================================================== */
+
+        function renderProducts() {
+
+            const grid =
+                document.getElementById("productGrid");
+
+
+            grid.innerHTML =
+                db.products.map(product => {
+
+                    let stockClass = "";
+
+                    if (product.stock <= 3)
+                        stockClass = "low";
+
+                    if (product.stock === 0)
+                        stockClass = "empty-stock";
+
+
+                    return `
+
+                        <div class="product-card">
+
+                            <div class="product-image">
+
+                                <i class="fa-solid fa-guitar"></i>
+
+                                <span>
+                                    ${escapeHTML(product.category)}
+                                </span>
+
+                            </div>
+
+
+                            <div class="product-info">
+
+                                <h3>
+                                    ${escapeHTML(product.name)}
+                                </h3>
+
+                                <span class="product-category">
+                                    ${escapeHTML(product.category)}
+                                </span>
+
+
+                                <div class="product-bottom">
+
+                                    <strong>
+                                        ${money(product.price)}
+                                    </strong>
+
+                                    <span class="stock ${stockClass}">
+                                        ${product.stock} em estoque
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    `;
+
+                }).join("");
+
+        }
+
+
+        document
+            .getElementById("productForm")
+            .addEventListener("submit", e => {
+
+                e.preventDefault();
+
+
+                const product = {
+
+                    id: Date.now(),
+
+                    name:
+                        document.getElementById("productName").value,
+
+                    category:
+                        document.getElementById("productCategory").value,
+
+                    price:
+                        Number(
+                            document.getElementById("productPrice").value
+                        ),
+
+                    stock:
+                        Number(
+                            document.getElementById("productStock").value
+                        )
+
+                };
+
+
+                db.products.push(product);
+
+                saveDB();
+
+                e.target.reset();
+
+                closeModal("productModal");
+
+                renderAll();
+
+
+                toast(
+                    "Produto cadastrado",
+                    `${product.name} foi adicionado ao catálogo.`
+                );
+
+            });
+
+
+        /* ========================================================
+           DASHBOARD
+        ======================================================== */
+
+        function updateDashboard() {
+
+            const revenue =
+                db.sales.reduce(
+                    (total, sale) =>
+                        total + Number(sale.value),
+                    0
+                );
+
+
+            const salesCount =
+                db.sales.length;
+
+
+            const ticket =
+                salesCount
+                    ? revenue / salesCount
+                    : 0;
+
+
+            document.getElementById("totalClients").textContent =
+                db.clients.length;
+
+
+            document.getElementById("totalRevenue").textContent =
+                money(revenue);
+
+
+            document.getElementById("totalSales").textContent =
+                salesCount;
+
+
+            document.getElementById("averageTicket").textContent =
+                money(ticket);
+
+
+            document.getElementById("salesRevenue").textContent =
+                money(revenue);
+
+
+            document.getElementById("salesCount").textContent =
+                salesCount;
+
+
+            document.getElementById("salesTicket").textContent =
+                money(ticket);
+
+
+            document.getElementById("clientStatTotal").textContent =
+                db.clients.length;
+
+
+            document.getElementById("clientStatActive").textContent =
+                db.clients.filter(
+                    c => c.status === "Ativo"
+                ).length;
+
+
+            document.getElementById("clientStatVip").textContent =
+                db.clients.filter(
+                    c => c.status === "VIP"
+                ).length;
+
+
+            document.getElementById("clientStatNew").textContent =
+                Math.min(db.clients.length, 3);
+
+
+            updatePipeline();
+
+        }
+
+
+        function updatePipeline() {
+
+            const total =
+                db.clients.length || 1;
+
+
+            const leads =
+                Math.max(1, Math.round(total * 0.8));
+
+            const contact =
+                Math.max(1, Math.round(total * 0.6));
+
+            const negotiation =
+                Math.max(1, Math.round(total * 0.4));
+
+            const won =
+                db.sales.length;
+
+
+            setPipeline(
+                "pipelineLeads",
+                "barLeads",
+                leads,
+                total
+            );
+
+            setPipeline(
+                "pipelineContact",
+                "barContact",
+                contact,
+                total
+            );
+
+            setPipeline(
+                "pipelineNegotiation",
+                "barNegotiation",
+                negotiation,
+                total
+            );
+
+            setPipeline(
+                "pipelineWon",
+                "barWon",
+                won,
+                Math.max(total, won)
+            );
+
+        }
+
+
+        function setPipeline(
+            numberId,
+            barId,
+            value,
+            total
+        ) {
+
+            document.getElementById(numberId).textContent =
+                value;
+
+
+            document.getElementById(barId).style.width =
+                Math.min(
+                    100,
+                    Math.round((value / total) * 100)
+                ) + "%";
+
+        }
+
+
+        /* ========================================================
+           ATIVIDADES
+        ======================================================== */
+
+        function renderActivities() {
+
+            const list =
+                document.getElementById("activityList");
+
+
+            const activities = [];
+
+
+            db.sales.slice(-3).forEach(sale => {
+
+                activities.push({
+
+                    icon: "fa-cart-shopping",
+
+                    title: "Nova venda registrada",
+
+                    text:
+                        `${sale.client} comprou ${sale.product}`,
+
+                    time: sale.date
+
+                });
+
+            });
+
+
+            db.services.slice(-2).forEach(service => {
+
+                activities.push({
+
+                    icon: "fa-screwdriver-wrench",
+
+                    title: "Ordem de serviço",
+
+                    text:
+                        `${service.equipment} — ${service.status}`,
+
+                    time: "Agora"
+
+                });
+
+            });
+
+
+            db.follows.slice(-2).forEach(item => {
+
+                activities.push({
+
+                    icon: "fa-heart",
+
+                    title: "Pós-venda",
+
+                    text:
+                        `${item.type} — ${item.client}`,
+
+                    time: item.date
+
+                });
+
+            });
+
+
+            if (!activities.length) {
+
+                list.innerHTML =
+                    `<p class="empty-message">Nenhuma atividade.</p>`;
+
+                return;
+
+            }
+
+
+            list.innerHTML =
+                activities
+                    .slice(-6)
+                    .reverse()
+                    .map(activity => `
+
+                        <div class="activity">
+
+                            <div class="activity-icon">
+                                <i class="fa-solid ${activity.icon}"></i>
+                            </div>
+
+                            <div class="activity-content">
+
+                                <strong>
+                                    ${escapeHTML(activity.title)}
+                                </strong>
+
+                                <p>
+                                    ${escapeHTML(activity.text)}
+                                </p>
+
+                                <small>
+                                    ${escapeHTML(activity.time)}
+                                </small>
+
+                            </div>
+
+                        </div>
+
+                    `)
+                    .join("");
+
+        }
+
+
+        /* ========================================================
+           RELATÓRIOS
+        ======================================================== */
+
+        function updateReports() {
+
+            const clients =
+                db.clients.length;
+
+
+            const active =
+                db.clients.filter(
+                    c =>
+                        c.status === "Ativo" ||
+                        c.status === "VIP"
+                ).length;
+
+
+            const vip =
+                db.clients.filter(
+                    c => c.status === "VIP"
+                ).length;
+
+
+            const uniqueBuyers =
+                new Set(
+                    db.sales.map(sale => sale.client)
+                ).size;
+
+
+            const repurchase =
+                clients
+                    ? Math.round(
+                        (Math.max(0, uniqueBuyers - 1) /
+                        clients) * 100
+                    )
+                    : 0;
+
+
+            const retention =
+                clients
+                    ? Math.round(
+                        (active / clients) * 100
+                    )
+                    : 0;
+
+
+            const conversion =
+                clients
+                    ? Math.min(
+                        100,
+                        Math.round(
+                            (db.sales.length / clients) * 100
+                        )
+                    )
+                    : 0;
+
+
+            const satisfaction =
+                clients
+                    ? Math.min(
+                        100,
+                        82 + db.follows.length * 2
+                    )
+                    : 0;
+
+
+            setReport(
+                "repurchaseRate",
+                "repurchaseBar",
+                repurchase
+            );
+
+            setReport(
+                "retentionRate",
+                "retentionBar",
+                retention
+            );
+
+            setReport(
+                "conversionRate",
+                "conversionBar",
+                conversion
+            );
+
+            setReport(
+                "reportSatisfaction",
+                "satisfactionBar",
+                satisfaction
+            );
+
+
+            document.getElementById("indicatorClients").textContent =
+                clients;
+
+
+            const revenue =
+                db.sales.reduce(
+                    (sum, sale) =>
+                        sum + Number(sale.value),
+                    0
+                );
+
+
+            document.getElementById("indicatorRevenue").textContent =
+                money(revenue);
+
+
+            document.getElementById("indicatorTicket").textContent =
+                money(
+                    db.sales.length
+                        ? revenue / db.sales.length
+                        : 0
+                );
+
+
+            document.getElementById("indicatorServices").textContent =
+                db.services.length;
+
+
+            document.getElementById("indicatorFollow").textContent =
+                db.follows.length;
+
+        }
+
+
+        function setReport(
+            valueId,
+            barId,
+            value
+        ) {
+
+            document.getElementById(valueId).textContent =
+                value + "%";
+
+            document.getElementById(barId).style.width =
+                value + "%";
+
+        }
+
+
+        /* ========================================================
+           GRÁFICO
+        ======================================================== */
+
+        let salesChart;
+
+
+        function renderChart() {
+
+            const canvas =
+                document.getElementById("salesChart");
+
+            if (!canvas) return;
+
+
+            const labels =
+                db.sales.map(sale => sale.date);
+
+
+            const values =
+                db.sales.map(sale => sale.value);
+
+
+            if (salesChart) {
+
+                salesChart.destroy();
+
+            }
+
+
+            salesChart =
+                new Chart(
+                    canvas,
+                    {
+
+                        type: "line",
+
+                        data: {
+
+                            labels,
+
+                            datasets: [
+
+                                {
+
+                                    label: "Vendas",
+
+                                    data: values,
+
+                                    borderWidth: 3,
+
+                                    tension: 0.4,
+
+                                    fill: true,
+
+                                    backgroundColor:
+                                        "rgba(139, 92, 246, 0.12)",
+
+                                    borderColor:
+                                        "#8b5cf6",
+
+                                    pointBackgroundColor:
+                                        "#ffffff",
+
+                                    pointBorderColor:
+                                        "#8b5cf6",
+
+                                    pointRadius: 5
+
+                                }
+
+                            ]
+
+                        },
+
+                        options: {
+
+                            responsive: true,
+
+                            maintainAspectRatio: false,
+
+                            plugins: {
+
+                                legend: {
+                                    display: false
+                                }
+
+                            },
+
+                            scales: {
+
+                                y: {
+
+                                    beginAtZero: true,
+
+                                    grid: {
+                                        color:
+                                            "rgba(255,255,255,0.06)"
+                                    },
+
+                                    ticks: {
+
+                                        color: "#777",
+
+                                        callback: function(value) {
+
+                                            return "R$ " +
+                                                Number(value)
+                                                    .toLocaleString(
+                                                        "pt-BR"
+                                                    );
+
+                                        }
+
+                                    }
+
+                                },
+
+                                x: {
+
+                                    grid: {
+                                        display: false
+                                    },
+
+                                    ticks: {
+                                        color: "#777"
+                                    }
+
+                                }
+
+                            }
+
+                        }
+
+                    }
+                );
+
+        }
+
+
+        /* ========================================================
+           TOAST
+        ======================================================== */
+
+        let toastTimeout;
+
+
+        function toast(title, message) {
+
+            const element =
+                document.getElementById("toast");
+
+
+            document.getElementById("toastTitle").textContent =
+                title;
+
+
+            document.getElementById("toastMessage").textContent =
+                message;
+
+
+            element.classList.add("show");
+
+
+            clearTimeout(toastTimeout);
+
+
+            toastTimeout =
+                setTimeout(() => {
+
+                    element.classList.remove("show");
+
+                }, 3500);
+
+        }
+
+
+        /* ========================================================
+           PESQUISA GLOBAL
+        ======================================================== */
+
+        document
+            .getElementById("globalSearch")
+            .addEventListener("keydown", e => {
+
+                if (e.key !== "Enter") return;
+
+
+                const query =
+                    e.target.value.toLowerCase().trim();
+
+
+                if (!query) return;
+
+
+                const client =
+                    db.clients.find(
+                        c =>
+                            c.name.toLowerCase().includes(query) ||
+                            c.email.toLowerCase().includes(query)
+                    );
+
+
+                const sale =
+                    db.sales.find(
+                        s =>
+                            s.client.toLowerCase().includes(query) ||
+                            s.product.toLowerCase().includes(query)
+                    );
+
+
+                if (client) {
+
+                    showSection("clientes");
+
+                    document.getElementById("clientSearch").value =
+                        query;
+
+                    renderClients();
+
+                    toast(
+                        "Cliente encontrado",
+                        client.name
+                    );
+
+                } else if (sale) {
+
+                    showSection("vendas");
+
+                    document.getElementById("saleSearch").value =
+                        query;
+
+                    renderSales();
+
+                    toast(
+                        "Venda encontrada",
+                        sale.id
+                    );
+
+                } else {
+
+                    toast(
+                        "Nenhum resultado",
+                        "Não encontramos esse registro."
+                    );
 
                 }
 
             });
 
-        }, {
-            threshold: 0.15
-        });
+
+        /* ========================================================
+           MOBILE
+        ======================================================== */
+
+        document
+            .getElementById("mobileMenu")
+            .addEventListener("click", () => {
+
+                document
+                    .getElementById("sidebar")
+                    .classList.toggle("mobile-open");
+
+            });
 
 
-        document.querySelectorAll(
-            '.card, .glass-card, .sector, .metric, .profile-card, .timeline-item, .execution-step, .strategy-grid > div'
-        ).forEach(element => {
+        /* ========================================================
+           NOTIFICAÇÕES
+        ======================================================== */
 
-            element.classList.add('reveal');
+        document
+            .getElementById("notificationBtn")
+            .addEventListener("click", () => {
 
-            observer.observe(element);
+                toast(
+                    "Notificações",
+                    "Você possui 3 atividades pendentes."
+                );
 
-        });
+            });
+
+
+        /* ========================================================
+           RENDER GERAL
+        ======================================================== */
+
+        function renderAll() {
+
+            updateDashboard();
+
+            renderClients();
+
+            renderSales();
+
+            renderServices();
+
+            renderFollowUps();
+
+            renderProducts();
+
+            renderActivities();
+
+            updateReports();
+
+            renderChart();
+
+            populateClientSelects();
+
+            populateProductSelect();
+
+        }
+
+
+        /* ========================================================
+           INICIALIZAÇÃO
+        ======================================================== */
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            () => {
+
+                renderAll();
+
+            }
+        );
 
     </script>
 
 </body>
-</html>
-```
 
+</html>
